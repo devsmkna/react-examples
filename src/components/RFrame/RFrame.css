@@ -1,0 +1,11 @@
+.r-frame {
+    border-radius: 14px;
+    border: 8px solid burlywood;
+    min-width: 200px;
+    min-height: 200px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}

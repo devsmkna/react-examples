@@ -1,0 +1,45 @@
+.r-characters-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.r-characters-buttons button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+
+  background-color: transparent;
+  border: none;
+}
+
+.r-characters-buttons input {
+  border: none;
+  border-bottom: 0.1rem solid lightseagreen;
+  text-align: center;
+  margin: 0 0.5rem;
+  padding: 0.25rem 0;
+  max-width: 3rem;
+}
+
+.r-characters {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.r-card.alive .r-card-description {
+  color: lightseagreen;
+}
+
+.r-card.unknown .r-card-description {
+  color: lightgray;
+}
+
+.r-card.dead .r-card-description {
+  color: lightcoral;
+}

@@ -1,0 +1,54 @@
+:root {
+  --card-size: 175px;
+}
+
+.r-card {
+  width: fit-content;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.r-card-thumbnail {
+  width: var(--card-size);
+  height: var(--card-size);
+}
+
+.r-card-title {
+  line-height: 1.2rem;
+  height: 2.4rem;
+  overflow-y: hidden;
+  max-width: var(--card-size);
+  margin: 0.5rem 0;
+}
+
+.r-card-description {
+  line-height: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+[class^="r-card-badge"] {
+  margin: 0 5px;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: whitesmoke;
+}
+
+.r-card-badge_opentowork {
+  background-color: deeppink;
+}
+
+.r-card-badge_new {
+  background-color: blueviolet;
+}

@@ -1,6 +1,12 @@
-.people-cards {
+.people-cards, .frame-wrapper, .counter-wrapper {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.counter-wrapper {
+    flex-direction: column;
+
 }
