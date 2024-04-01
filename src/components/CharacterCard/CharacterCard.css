@@ -2,7 +2,7 @@
   --card-size: 175px;
 }
 
-.r-card {
+.card-character {
   width: fit-content;
   margin: 0;
   padding: 0.25rem 0.5rem;
@@ -18,37 +18,24 @@
   text-align: center;
 }
 
-.r-card-thumbnail {
+.card-thumbnail {
   width: var(--card-size);
   height: var(--card-size);
 }
 
-.r-card-title {
-  line-height: 1.2rem;
-  height: 2.4rem;
+.card-content {
   overflow-y: hidden;
   max-width: var(--card-size);
+}
+
+.card-content h3 {
+  line-height: 1.2rem;
+  height: 2.4rem;
+  font-weight: bold;
   margin: 0.5rem 0;
 }
 
-.r-card-description {
-  line-height: 1.2rem;
+.card-content p {
   margin: 0;
   padding: 0;
-}
-
-[class^="r-card-badge"] {
-  margin: 0 5px;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  color: whitesmoke;
-}
-
-.r-card-badge_opentowork {
-  background-color: deeppink;
-}
-
-.r-card-badge_new {
-  background-color: blueviolet;
 }
