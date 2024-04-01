@@ -1,54 +1,53 @@
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import { maxPages } from "../../hooks/useAPI";
+import { Link, useLocation } from "react-router-dom";
+import { Paginator } from "../Paginator/Paginator";
 
-const Navbar = () => {
+const Navbar = ({
+  routes,
+  page,
+  maxPages,
+  previousPage,
+  nextPage,
+}: {
+  routes: string[];
+  page: number;
+  maxPages: number;
+  previousPage: () => void;
+  nextPage: () => void;
+}) => {
   const { pathname } = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const page = +(searchParams.get("page") || 1);
 
   const undeline = {
     textDecoration: "underline",
     margin: "0 0.5rem",
   };
 
-  const routes = ["characters", "locations", "episodes"];
-
   return (
-    <nav>
-      {routes.map((route) => (
-        <Link
-          key={route}
-          to={`/${route}`}
-          style={pathname === `/${route}` ? undeline : { margin: "0 0.5rem" }}
-        >
-          {route[0].toUpperCase() + route.slice(1)}
-        </Link>
-      ))}
-      <div className="page-buttons">
-        <button
-          onClick={() => setSearchParams({ page: (page - 1).toString() })}
-          disabled={page <= 1}
-        >
-          {"<"}
-        </button>
-        <span>
-          Page
-          <input
-            type="number"
-            min={1}
-            max={maxPages}
-            value={page}
-            onChange={(e) => setSearchParams({ page: e.target.value })}
-          />
-          of {maxPages}
-        </span>
-        <button
-          onClick={() => setSearchParams({ page: (page + 1).toString() })}
-          disabled={page >= maxPages}
-        >
-          {">"}
-        </button>
+    <nav className="navbar bg-neutral mb-4">
+      <div className="navbar-start">
+        <ul className="menu menu-horizontal">
+          {routes.map((route) => (
+            <Link
+              key={route}
+              to={`/${route}`}
+              style={
+                pathname === `/${route}` ? undeline : { margin: "0 0.5rem" }
+              }
+            >
+              {route[0].toUpperCase() + route.slice(1)}
+            </Link>
+          ))}
+        </ul>
       </div>
+      {maxPages > 0 && (
+        <div className="navbar-end">
+          <Paginator
+            currentPage={page}
+            maxPages={maxPages}
+            previousPage={previousPage}
+            nextPage={nextPage}
+          />
+        </div>
+      )}
     </nav>
   );
 };
