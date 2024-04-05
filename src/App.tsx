@@ -1,19 +1,23 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
-import { maxPages } from "./hooks/useAPI";
 import { router } from "./router/router";
+import { memo, useCallback } from "react";
 
-const App = () => {
+const App = memo(() => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = +(searchParams.get("page") || 1);
 
-  const nextPage = () =>
-    page < maxPages && setSearchParams({ page: (page + 1).toString() });
-  const previousPage = () =>
-    page > 1 && setSearchParams({ page: (page - 1).toString() });
+  const nextPage = useCallback(
+    () => setSearchParams({ page: (page + 1).toString() }),
+    [page, setSearchParams]
+  );
+  const previousPage = useCallback(
+    () => setSearchParams({ page: (page - 1).toString() }),
+    [page, setSearchParams]
+  );
 
-  const routes: string[] =
+  const routes =
     router.routes
       .find((route) => route.path === "/")
       ?.children?.map((route) => route.path || "")
@@ -21,16 +25,10 @@ const App = () => {
 
   return (
     <div>
-      <Navbar
-        routes={routes}
-        page={page}
-        maxPages={maxPages}
-        nextPage={nextPage}
-        previousPage={previousPage}
-      />
-      <Outlet />
+      <Navbar routes={routes} />
+      <Outlet context={[previousPage, nextPage]} />
     </div>
   );
-};
+});
 
 export default App;

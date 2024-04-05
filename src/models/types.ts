@@ -68,3 +68,8 @@ export type QueryParamsLocation = {
   type?: string;
   dimension?: string;
 };
+
+export type CartProduct = {
+  id: string;
+  quantity: number;
+};

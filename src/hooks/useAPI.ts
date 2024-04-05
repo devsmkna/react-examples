@@ -10,8 +10,6 @@ import {
   QueryParamsEpisode,
 } from "../models/types";
 
-export let maxPages = 0;
-
 const useAPI = <T>(
   uri: string,
   page: number,
@@ -20,6 +18,7 @@ const useAPI = <T>(
   const [response, setResponse] = useState<T[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
+  const [maxPages, setMaxPages] = useState<number>(0);
 
   useEffect(() => {
     getResponse();
@@ -32,7 +31,8 @@ const useAPI = <T>(
       const response = await axios.get<Response<T>>(uri + `/?page=${page}`, {
         params: queryParams,
       });
-      maxPages = response.data.info.pages;
+
+      setMaxPages(response.data.info.pages);
 
       setResponse(response.data.results);
       setIsLoading(false);
@@ -42,11 +42,12 @@ const useAPI = <T>(
     }
   };
 
-  return [response, setResponse, isLoading, isError] as [
+  return [response, maxPages, isLoading, isError, setResponse] as [
     T[],
-    React.Dispatch<React.SetStateAction<T[]>>,
+    number,
     boolean,
-    boolean
+    boolean,
+    React.Dispatch<React.SetStateAction<T[]>>
   ];
 };
 
