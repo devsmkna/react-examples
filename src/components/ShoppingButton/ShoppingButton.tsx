@@ -4,7 +4,7 @@ export const ShoppingButton = ({
   handleClick: () => void;
 }) => {
   return (
-    <button onClick={handleClick} className="btn btn-primary">
+    <button onClick={handleClick} className="btn btn-primary btn-block">
       Add to Cart
       <svg
         xmlns="http://www.w3.org/2000/svg"

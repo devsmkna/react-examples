@@ -17,7 +17,7 @@ export const MemoryCard = memo(
     console.log("rerender card")
     return (
       <div
-        className="card bg-white shadow-xl p-2"
+        className="card bg-base-300 shadow-xl p-2"
         onClick={() => {
           clickHandler(id, index);
         }}

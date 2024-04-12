@@ -41,7 +41,7 @@ export const MemoryGrid = memo(({ elements }: { elements: Character[] }) => {
   );
 
   return (
-    <div className="grid grid-cols-10 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4 px-4">
       {elements.map((element, index) => (
         <MemoryCard
           key={index}

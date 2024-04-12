@@ -23,7 +23,7 @@ const useFakeProductAPI = <T>(uri: string) => {
   const getResponse = async () => {
     try {
       setIsLoading(false);
-      const response = await axios.get<T[]>("uri");
+      const response = await axios.get<T[]>(uri);
       setResponse(response.data);
       setIsLoading(false);
     } catch (error) {

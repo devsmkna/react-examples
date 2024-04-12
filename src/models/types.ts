@@ -88,3 +88,8 @@ export type Product = {
   image: string;
   rating: ProductRating;
 };
+
+export type OutletContext = {
+  nextPage: () => void,
+  prevPage: () => void
+}

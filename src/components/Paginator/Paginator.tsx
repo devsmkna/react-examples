@@ -2,30 +2,30 @@ import { memo } from "react";
 
 export const Paginator = memo(
   ({
-    currentPage,
+    page,
     maxPages,
-    previousPage,
+    prevPage,
     nextPage,
   }: {
-    currentPage: number;
+    page: number;
     maxPages?: number;
-    previousPage: () => void;
+    prevPage: () => void;
     nextPage: () => void;
   }) => {
     return (
       <div className="join">
         <button
           className="join-item btn"
-          onClick={previousPage}
-          disabled={currentPage <= 1}
+          onClick={prevPage}
+          disabled={page <= 1}
         >
           «
         </button>
-        <button className="join-item btn">Page {currentPage}</button>
+        <button className="join-item btn">{page}</button>
         <button
           className="join-item btn"
           onClick={nextPage}
-          disabled={maxPages ? currentPage >= maxPages : false}
+          disabled={maxPages ? page >= maxPages : false}
         >
           »
         </button>

@@ -4,8 +4,7 @@ export const RemoveFromCartButton = ({
   handleClick: () => void;
 }) => {
   return (
-    <button onClick={handleClick} className="btn btn-error">
-      Remove from Cart
+    <button onClick={handleClick} className="btn btn-error btn-circle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
