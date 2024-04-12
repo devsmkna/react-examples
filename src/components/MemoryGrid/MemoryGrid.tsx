@@ -12,7 +12,7 @@ export const MemoryGrid = memo(({ elements }: { elements: Character[] }) => {
       console.log("showList", showList);
 
       if (showList.length === elements.length) {
-        alert("Hai vinto!")
+        alert("Hai vinto!");
         return;
       }
 
@@ -28,7 +28,7 @@ export const MemoryGrid = memo(({ elements }: { elements: Character[] }) => {
 
       // different card
       if (currentCard !== id) {
-        await new Promise(res => setTimeout(res,300))
+        await new Promise((res) => setTimeout(res, 300));
         setShowList([
           ...showList.filter((i, ins) => ins < showList.length - 1),
         ]);

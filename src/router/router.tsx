@@ -5,6 +5,7 @@ import LocationPage from "../pages/LocationPage";
 import EpisodePage from "../pages/EpisodePage";
 import { MemoryPage } from "../pages/MemoryPage";
 import { CartPage } from "../pages/CartPage";
+import { ECommerce } from "../components/ECommerce/ECommerce";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "memory",
         element: <MemoryPage />,
+      },
+      {
+        path: "ecommerce",
+        element: <ECommerce />,
       },
       {
         path: "cart",

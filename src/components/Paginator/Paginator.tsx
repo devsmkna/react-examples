@@ -8,7 +8,7 @@ export const Paginator = memo(
     nextPage,
   }: {
     currentPage: number;
-    maxPages: number;
+    maxPages?: number;
     previousPage: () => void;
     nextPage: () => void;
   }) => {
@@ -25,7 +25,7 @@ export const Paginator = memo(
         <button
           className="join-item btn"
           onClick={nextPage}
-          disabled={currentPage >= maxPages}
+          disabled={maxPages ? currentPage >= maxPages : false}
         >
           »
         </button>

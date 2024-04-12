@@ -13,17 +13,23 @@ export const cartSlice = createSlice({
       element && element.quantity++;
       localStorage.setItem("cart", JSON.stringify(state.value));
     },
-    removeFromCart: (state, { payload }: { payload: string }) => {
+    removeOneFromCart: (state, { payload }: { payload: string }) => {
       const element = state.value.find((element) => element.id === payload);
       element && element.quantity > 1
         ? element.quantity--
-        : (state.value = state.value.filter(
-            (element) => element.id !== payload
-          ));
+        : (state.value = state.value.filter((el) => el.id !== payload));
+      localStorage.setItem("cart", JSON.stringify(state.value));
+    },
+    removeFromCart: (state, { payload }: { payload: string }) => {
+      const element = state.value.find((element) => element.id === payload);
+      if (element) {
+        state.value = state.value.filter((el) => el.id !== payload);
+      }
       localStorage.setItem("cart", JSON.stringify(state.value));
     },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, removeOneFromCart } =
+  cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
