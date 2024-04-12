@@ -1,14 +1,11 @@
 import { useCharacters } from "../hooks/useAPI";
 import { MemoryGrid } from "../components/MemoryGrid/MemoryGrid";
-import { useOutletContext, useSearchParams } from "react-router-dom";
-import { OutletContext } from "../models/types";
-import { PageInfo } from "../components/PageInfo/PageInfo";
+import { useSearchParams } from "react-router-dom";
 
 export const MemoryPage = () => {
   const [searchParams] = useSearchParams();
   const page = +(searchParams.get("page") || 1);
-  const [characters, maxPages] = useCharacters(page, {});
-  const { nextPage, prevPage } = useOutletContext<OutletContext>();
+  const [characters] = useCharacters(page, {});
 
   if (characters.length === 0) {
     return <p>Loading...</p>;
@@ -18,15 +15,5 @@ export const MemoryPage = () => {
     () => Math.random() - 0.5
   );
 
-  return (
-    <>
-      <PageInfo
-        page={page}
-        maxPages={maxPages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
-      <MemoryGrid elements={generateGrid}></MemoryGrid>
-    </>
-  );
+  return <MemoryGrid elements={generateGrid}></MemoryGrid>;
 };

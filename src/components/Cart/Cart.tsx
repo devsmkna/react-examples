@@ -24,7 +24,7 @@ export const Cart = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 px-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4">
       {cart.map((element) => {
         const product = products.find((p) => p.id.toString() === element.id);
 

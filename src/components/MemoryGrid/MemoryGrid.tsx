@@ -8,8 +8,6 @@ export const MemoryGrid = memo(({ elements }: { elements: Character[] }) => {
 
   const handleClick = useCallback(
     async (id: number, index: number) => {
-      console.log("click", id, index, currentCard);
-      console.log("showList", showList);
 
       if (showList.length === elements.length) {
         alert("Hai vinto!");
